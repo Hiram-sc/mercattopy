@@ -76,11 +76,14 @@ WSGI_APPLICATION = 'mercattopy.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mercattopy",
-        "USER": "postgres",
-        "PASSWORD": "123456",
-        "HOST": "localhost",
+        "NAME": "neondb",
+        "USER": "neondb_owner",
+        "PASSWORD": "npg_1KzCjk4wOyDM",
+        "HOST": "ep-young-pond-aiyzvv9r-pooler.c-4.us-east-1.aws.neon.tech",
         "PORT": "5432",
+        'OPTIONS': {    
+            'sslmode':'require'
+        }
     }
 }
 
