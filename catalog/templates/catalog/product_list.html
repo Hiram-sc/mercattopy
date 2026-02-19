@@ -19,12 +19,12 @@
     <tbody>
         {% for product in products %}
         <tr>
-            <td>{{ product.name }}</td>
-            <td>{{ product.category.name }}</td>
-            <td>R$ {{ product.price }}</td>
-            <td>{{ product.stock }}</td>
+            <td>{{ product.nome }}</td>
+            <td>{{ product.categoria.nome }}</td>
+            <td>R$ {{ product.preco }}</td>
+            <td>{{ product.quantidade_estoque }}</td>
             <td>
-                {% if product.is_active %}
+                {% if product.status %}
                     <span class="badge bg-success">Ativo</span>
                 {% else %}
                     <span class="badge bg-danger">Inativo</span>

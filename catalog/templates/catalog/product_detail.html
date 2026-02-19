@@ -1,37 +1,37 @@
-{% extends "base.html" %}
-{% block title %}Produto | MercattoPy{% endblock %}
+    {% extends "base.html" %}
+    {% block title %}Produto | MercattoPy{% endblock %}
 
-{% block content %}
+    {% block content %}
 
-<h3 class="mb-4">Detalhe do Produto</h3>
+    <h3 class="mb-4">Detalhe do Produto</h3>
 
-<div class="card shadow-sm">
-    <div class="card-body">
-        <h4>{{ product.name }}</h4>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4>{{ product.nome }}</h4>
 
-        <p class="text-muted">
-            Categoria: <strong>{{ product.category.name }}</strong>
-        </p>
+            <p class="text-muted">
+                Categoria: <strong>{{ product.categoria.nome }}</strong>
+            </p>
 
-        <p>{{ product.description }}</p>
+            <p>{{ product.descricao }}</p>
 
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                Preço: <strong>R$ {{ product.price }}</strong>
-            </li>
-            <li class="list-group-item">
-                Estoque: <strong>{{ product.stock }}</strong>
-            </li>
-            <li class="list-group-item">
-                Status:
-                {% if product.is_active %}
-                    <span class="badge bg-success">Ativo</span>
-                {% else %}
-                    <span class="badge bg-danger">Inativo</span>
-                {% endif %}
-            </li>
-        </ul>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Preço: <strong>R$ {{ product.preco }}</strong>
+                </li>
+                <li class="list-group-item">
+                    Estoque: <strong>{{ product.quantidade_estoque }}</strong>
+                </li>
+                <li class="list-group-item">
+                    Status:
+                    {% if product.status %}
+                        <span class="badge bg-success">Ativo</span>
+                    {% else %}
+                        <span class="badge bg-danger">Inativo</span>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
 
-{% endblock %}
+    {% endblock %}

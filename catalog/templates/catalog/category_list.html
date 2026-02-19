@@ -16,10 +16,10 @@
     <tbody>
         {% for category in categories %}
         <tr>
-            <td>{{ category.name }}</td>
-            <td>{{ category.description }}</td>
+            <td>{{ category.nome }}</td>
+            <td>{{ category.descricao }}</td>
             <td>
-                {% if category.is_active %}
+                {% if category.status %}
                     <span class="badge bg-success">Ativa</span>
                 {% else %}
                     <span class="badge bg-danger">Inativa</span>
