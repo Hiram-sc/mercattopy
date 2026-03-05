@@ -1,0 +1,47 @@
+    {% extends "base.html" %}
+
+    {% block title %}Excluir Produto | MercattoPy{% endblock %}
+
+    {% block content %}
+
+    <section class="container my-4" aria-labelledby="titulo-excluir-produto">
+    <div class="card shadow-sm border-danger">
+        <div class="card-body">
+
+        <h1 id="titulo-excluir-produto" class="h4 mb-3 text-danger">
+            <i class="fa-solid fa-triangle-exclamation me-2" aria-hidden="true"></i>
+            Confirmar exclusão
+        </h1>
+
+        <p class="mb-3">
+            Você tem certeza que deseja excluir o produto abaixo?
+        </p>
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+            <strong>Produto:</strong>
+            <span class="ms-1">{{ product.nome }}</span>
+            </li>
+            <li class="list-group-item">
+            <strong>Quantia:</strong>
+            <span class="ms-1">{{ product.quantidade_estoque }}</span>
+            </li>
+        </ul>
+
+        <form method="post" class="d-flex gap-2">
+            {% csrf_token %}
+
+            <button class="btn btn-danger" type="submit">
+            <i class="fa-solid fa-trash me-2" aria-hidden="true"></i>
+            Excluir
+            </button>
+
+            <a href="{% url 'product_list' %}" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-xmark me-2" aria-hidden="true"></i>
+            Cancelar
+            </a>
+        </form>
+        </div>
+    </div>
+    </section>
+
+    {% endblock %}

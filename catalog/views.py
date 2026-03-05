@@ -29,7 +29,7 @@ def criar_produto(request):
             if form.is_valid():
                 form.save()
                 messages.success(request, "Produto criado com sucesso.")
-                return redirect("lista_produto")
+                return redirect("product_list")
             
             else:
                 messages.error(request, "Erro ao criar o produto. Verifique os dados.")
@@ -38,7 +38,7 @@ def criar_produto(request):
             form = ProdutoForm()
 
         products = Produto.objects.all()
-        return render(request, "catalog/product_list.html", {"products" : products, "form" : form})
+        return render(request, "catalog/pessoa_form.html", {"form" : form})
 
 
 def editar_produto(request, id):
@@ -48,7 +48,7 @@ def editar_produto(request, id):
 
         if form.is_valid():
             form.save()
-            return redirect("lista_produto")
+            return redirect("product_list")
         
     else:
         form = ProdutoForm(instance=product)
@@ -56,22 +56,23 @@ def editar_produto(request, id):
     products = Produto.objects.all()
 
     return render(request, "catalog/pessoa_form.html", {
-        "form" : form
+        "form" : form,
+        "product" : product
     })
 
 
 def excluir_produto(request, id):
     product = Produto.objects.get(id=id)
     
-    if product.quantidade_estoque > 0:
-        messages.error(request, "Não é possível excluir produto com estoque maior que zero.")
-        return redirect("item_produto", id=product.id)
-    
     if request.method == "POST":
+        if product.quantidade_estoque > 0:
+            messages.error(request, "Não é possível excluir produto com estoque maior que zero.")
+            return redirect("product_detail", id=product.id)
+        
         product.delete()
         messages.success(request, "Produto excluído com sucesso.")
-        return redirect("lista_produto")
+        return redirect("product_list")
 
-    return render(request, "catalog/pessoa_form.html", {
+    return render(request, "catalog/pessoa_confirm_delete.html", {
         "product" : product
     })
