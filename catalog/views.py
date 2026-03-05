@@ -55,13 +55,12 @@ def editar_produto(request, id):
 
     products = Produto.objects.all()
 
-    return render(request, "catalog/product_list.html", {
-        "form" : form,
-        "products" : products
+    return render(request, "catalog/pessoa_form.html", {
+        "form" : form
     })
 
 
-def deletar_produto(request, id):
+def excluir_produto(request, id):
     product = Produto.objects.get(id=id)
     
     if product.quantidade_estoque > 0:
@@ -73,6 +72,6 @@ def deletar_produto(request, id):
         messages.success(request, "Produto excluído com sucesso.")
         return redirect("lista_produto")
 
-    return render(request, "catalog/product_detail.html", {
+    return render(request, "catalog/pessoa_form.html", {
         "product" : product
     })

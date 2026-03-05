@@ -10,10 +10,14 @@ class ProdutoForm(forms.ModelForm):
     
     def clean_nome(self):
         nome = self.cleaned_data.get('nome', '').strip()
-        if len(nome.split()) < 2:
+        if not nome:
             raise ValidationError(
-                'Informe o nome completo. Nome e sobrenome.'
+                "O nome do produto não pode estar vazio."
             )
+        if len(nome) < 3:
+            raise ValidationError(
+                "O nome do produto é muito curto."
+                )
         return nome
     
     def clean_preco(self):
