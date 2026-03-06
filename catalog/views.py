@@ -29,7 +29,7 @@ def criar_produto(request):
             if form.is_valid():
                 form.save()
                 messages.success(request, "Produto criado com sucesso.")
-                return redirect("product_list")
+                return redirect("produto")
             
             else:
                 messages.error(request, "Erro ao criar o produto. Verifique os dados.")
@@ -48,7 +48,7 @@ def editar_produto(request, id):
 
         if form.is_valid():
             form.save()
-            return redirect("product_list")
+            return redirect("produto")
         
     else:
         form = ProdutoForm(instance=product)
@@ -71,7 +71,7 @@ def excluir_produto(request, id):
         
         product.delete()
         messages.success(request, "Produto excluído com sucesso.")
-        return redirect("product_list")
+        return redirect("produto")
 
     return render(request, "catalog/pessoa_confirm_delete.html", {
         "product" : product
