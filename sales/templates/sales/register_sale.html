@@ -5,29 +5,34 @@
 {% block content %}
 <h3 class="mb-4">Venda</h3>
 
-<form method="post" class="d-flex gap-2">
+<form method="post">
     {% csrf_token %}
-</form>
 
-<table class="table table-striped shadow-sm">
-    <thead class="table-dark">
-        <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Preço</th>
-            <th>Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for produto in produtos %}
-        <tr>
-            <td>{{ produto.nome }}</td>
-            <td>{{ produto.quantidade }}</td>
-            <td>R$ {{ produto.preco }}</td>
-            <td>{{ produto.subtotal }}</td>
-        </tr>
-{% endfor %}
-    </tbody>
-</table>
+    <table class="table table-striped shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{ produto.nome }}</td>
+                <td>
+                    <input type="number" name="quantidade_{{ produto.id }}" class="form-control">
+                </td>
+                <td>R$ {{ produto.preco }}</td>
+                <td>-</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-sm btn-primary">Finalizar venda</button>
+
+</form>
 
 {% endblock %}

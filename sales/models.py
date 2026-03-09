@@ -1,4 +1,5 @@
 from django.db import models
+from catalog.models import Produto
 
 class Sale(models.Model):
     
@@ -17,15 +18,15 @@ class Sale(models.Model):
     )
 
     def __str__(self):
-        return f'{self.id}' - f'{self.status}'
+        return f'Venda {self.id} - {self.status}'
 
 class SaleItem(models.Model):
 
-    produto = models.CharField(max_length=100, unique=True, null=False)
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.IntegerField(default=0)
     preco = models.DecimalField(max_digits=6, decimal_places=2)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     sale = models.ForeignKey(Sale, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.produto}'
+        return f'{self.produto.nome}'
