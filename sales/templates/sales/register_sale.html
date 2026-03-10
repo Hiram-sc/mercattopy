@@ -22,10 +22,12 @@
             <tr>
                 <td>{{ produto.nome }}</td>
                 <td>
-                    <input type="number" name="quantidade_{{ produto.id }}" class="form-control">
+                    <input type="number" name="quantidade_{{ produto.id }}" class="form-control form-control-sm" style="width: 30%">
                 </td>
                 <td>R$ {{ produto.preco }}</td>
-                <td>-</td>
+                <td>
+                    <div class="ps-4">-</div>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

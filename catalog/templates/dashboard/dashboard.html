@@ -10,7 +10,7 @@
         <div class="card shadow-sm">
             <div class="card-body text-center">
                 <h6>Total de Produtos</h6>
-                <h3>{{ total_products }}</h3>
+                <h3>{{ total_products|default:0 }}</h3>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="card shadow-sm">
             <div class="card-body text-center">
                 <h6>Total de Categorias</h6>
-                <h3>{{ total_categories }}</h3>
+                <h3>{{ total_categories|default:0 }}</h3>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="card shadow-sm">
             <div class="card-body text-center">
                 <h6>Produtos Ativos</h6>
-                <h3>{{ active_products }}</h3>
+                <h3>{{ active_products|default:0 }}</h3>
             </div>
         </div>
     </div>
@@ -37,7 +37,15 @@
         <div class="card shadow-sm">
             <div class="card-body text-center">
                 <h6>Produtos Inativos</h6>
-                <h3>{{ inactive_products }}</h3>
+                <h3>{{ inactive_products|default:0 }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card shadow-sm mt-3">
+            <div class="card-body text-center">
+                <h6>Faturamento Total</h6>
+                <h3>R$ {{ total_revenue|default:0 }}</h3>
             </div>
         </div>
     </div>
